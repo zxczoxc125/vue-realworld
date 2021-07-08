@@ -1,11 +1,15 @@
 <template>
-  <div id="app">app</div>
+  <SideNav />
 </template>
 
 <script>
+import SideNav from './components/Layout/SideNav.vue';
+
 export default {
   name: 'App',
-  components: {},
+  components: {
+    SideNav,
+  },
 };
 </script>
 
