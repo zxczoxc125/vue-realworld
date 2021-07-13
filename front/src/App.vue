@@ -1,14 +1,14 @@
 <template>
-  <SideNav />
+  <NavBar />
 </template>
 
 <script>
-import SideNav from './components/Layout/NavBar.vue';
+import NavBar from './components/Layout/NavBar.vue';
 
 export default {
   name: 'App',
   components: {
-    SideNav,
+    NavBar,
   },
 };
 </script>
