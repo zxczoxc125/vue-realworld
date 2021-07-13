@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import SideNav from './components/Layout/SideNav.vue';
+import SideNav from './components/Layout/NavBar.vue';
 
 export default {
   name: 'App',
