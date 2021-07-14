@@ -1,14 +1,14 @@
 <template>
-  <NavBar />
+  <Layout />
 </template>
 
 <script>
-import NavBar from './components/Layout/NavBar.vue';
+import Layout from './components/Layout/Layout.vue';
 
 export default {
   name: 'App',
   components: {
-    NavBar,
+    Layout,
   },
 };
 </script>
