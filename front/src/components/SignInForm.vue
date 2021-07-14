@@ -24,7 +24,7 @@
 
     <b-button-group class="w-100">
       <b-button type="submit" variant="primary">Sign In</b-button>
-      <b-button>Sign Up</b-button></b-button-group
+      <b-button @click="handleClickSignUp">Sign Up</b-button></b-button-group
     >
   </b-form>
 </template>
@@ -46,6 +46,9 @@ export default {
 
       this.email = '';
       this.name = '';
+    },
+    handleClickSignUp() {
+      this.$router.push('/sign-up');
     },
   },
 };
