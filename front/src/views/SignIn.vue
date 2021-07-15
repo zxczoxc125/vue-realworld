@@ -1,17 +1,17 @@
 <template>
-  <div
-    class="w-100 h-100 d-flex align-items-center align-items-center justify-content-center"
-  >
+  <Page>
     <SignInForm />
-  </div>
+  </Page>
 </template>
 
 <script>
 import SignInForm from '../components/Form/SignInForm.vue';
+import Page from '../components/Layout/Page.vue';
 
 export default {
   components: {
     SignInForm,
+    Page,
   },
 };
 </script>
