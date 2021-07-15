@@ -1,5 +1,9 @@
 <template>
-  <ValidationProvider v-bind="$attrs" v-slot="{ errors, valid }">
+  <ValidationProvider
+    v-bind="$attrs"
+    :vid="$attrs.id"
+    v-slot="{ errors, valid }"
+  >
     <b-form-group v-bind="$attrs">
       <b-form-input
         v-bind="$attrs"
