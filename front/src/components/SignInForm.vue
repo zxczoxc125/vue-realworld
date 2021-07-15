@@ -1,44 +1,22 @@
 <template>
   <ValidationObserver ref="observer" v-slot="{ handleSubmit }">
     <b-form @submit.prevent="handleSubmit(onSubmit)" class="form">
-      <!-- TODO: input 컴포넌트로 분리 -->
-      <ValidationProvider
+      <TextInputWithValidation
         name="E-mail"
+        id="email"
         rules="required|email"
-        v-slot="{ errors, valid }"
-      >
-        <b-form-group id="email" label="E-mail:" label-for="email">
-          <b-form-input
-            autocomplete="nope"
-            id="email"
-            v-model="email"
-            placeholder="E-mail"
-            :state="errors[0] ? false : valid ? true : null"
-          ></b-form-input>
-          <b-form-invalid-feedback>
-            {{ errors[0] }}
-          </b-form-invalid-feedback>
-        </b-form-group>
-      </ValidationProvider>
+        label="E-mail:"
+        autocomplete="nope"
+        :initValue="email"
+      />
 
-      <ValidationProvider
+      <TextInputWithValidation
         name="Password"
+        id="password"
         rules="required"
-        v-slot="{ errors, valid }"
-      >
-        <b-form-group id="password" label="Password:" label-for="password">
-          <b-form-input
-            id="password"
-            v-model="password"
-            placeholder="Password"
-            :state="errors[0] ? false : valid ? true : null"
-            type="password"
-          ></b-form-input>
-          <b-form-invalid-feedback>
-            {{ errors[0] }}
-          </b-form-invalid-feedback>
-        </b-form-group>
-      </ValidationProvider>
+        label="Password:"
+        type="password"
+      />
 
       <b-button-group class="w-100">
         <b-button type="submit" variant="outline-primary">Sign In</b-button>
@@ -51,12 +29,13 @@
 </template>
 
 <script>
-import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import { ValidationObserver } from 'vee-validate';
+import TextInputWithValidation from './FormItem/TextInputWithValidation.vue';
 
 export default {
   components: {
     ValidationObserver,
-    ValidationProvider,
+    TextInputWithValidation,
   },
   data() {
     return {
