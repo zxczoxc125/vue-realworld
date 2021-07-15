@@ -1,14 +1,16 @@
 <template>
   <ValidationProvider
-    v-bind="$attrs"
+    :rules="$attrs.rules"
     :vid="$attrs.id"
+    :name="$attrs.name"
     v-slot="{ errors, valid }"
   >
-    <b-form-group v-bind="$attrs">
+    <b-form-group :label="$attrs.label" :id="$attrs.id">
       <b-form-input
-        v-bind="$attrs"
         v-model="value"
         :placeholder="$attrs.name"
+        :id="$attrs.id"
+        :name="$attrs.name"
         :state="errors[0] ? false : valid ? true : null"
       ></b-form-input>
       <b-form-invalid-feedback>
