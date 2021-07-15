@@ -45,12 +45,6 @@ export default {
   },
   methods: {
     onSubmit() {},
-    onReset(event) {
-      event.preventDefault();
-
-      this.email = '';
-      this.name = '';
-    },
     handleClickSignUp() {
       this.$router.push('/sign-up');
     },
