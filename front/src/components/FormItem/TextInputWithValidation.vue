@@ -7,7 +7,8 @@
   >
     <b-form-group :label="$attrs.label" :id="$attrs.id">
       <b-form-input
-        v-model="value"
+        :value="value"
+        @input="handleOnInput"
         :placeholder="$attrs.name"
         :id="$attrs.id"
         :name="$attrs.name"
@@ -28,14 +29,14 @@ export default {
     ValidationProvider,
   },
   props: {
-    initValue: {
+    value: {
       type: null,
     },
   },
-  data() {
-    return {
-      value: this.initValue,
-    };
+  methods: {
+    handleOnInput(value) {
+      this.$emit('input', value);
+    },
   },
 };
 </script>

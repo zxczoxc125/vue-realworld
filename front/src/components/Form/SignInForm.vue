@@ -7,7 +7,7 @@
         rules="required|email"
         label="E-mail:"
         autocomplete="nope"
-        :initValue="email"
+        v-model="email"
       />
 
       <TextInputWithValidation
@@ -16,6 +16,7 @@
         rules="required"
         label="Password:"
         type="password"
+        v-model="password"
       />
 
       <b-button-group class="w-100">

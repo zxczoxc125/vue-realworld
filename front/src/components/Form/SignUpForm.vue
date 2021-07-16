@@ -7,7 +7,7 @@
         rules="required|email"
         label="E-mail:"
         autocomplete="nope"
-        :initValue="email"
+        v-model="email"
       />
 
       <TextInputWithValidation
@@ -16,7 +16,7 @@
         rules="required"
         label="Username:"
         autocomplete="nope"
-        :initValue="username"
+        v-model="username"
       />
 
       <TextInputWithValidation
@@ -25,6 +25,7 @@
         rules="required"
         label="Password:"
         type="password"
+        v-model="password"
       />
 
       <TextInputWithValidation
@@ -33,6 +34,7 @@
         rules="required|confirmed:password"
         label="Password Confirm:"
         type="password"
+        v-model="passwordConfirm"
       />
 
       <b-button-group class="w-100">
@@ -59,11 +61,19 @@ export default {
       email: '',
       username: '',
       password: '',
-      passwordColnfirm: '',
+      passwordConfirm: '',
     };
   },
   methods: {
-    onSubmit() {},
+    onSubmit() {
+      const { email, username, password } = this;
+
+      console.log({
+        email,
+        username,
+        password,
+      });
+    },
     handleClickCancel() {
       this.$router.push('/');
     },
