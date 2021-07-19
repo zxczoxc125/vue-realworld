@@ -76,7 +76,7 @@ export default {
           variant: 'success',
           solid: true,
         });
-        this.$root.$router.push('/');
+        this.$router.push('/');
       } catch (e) {
         this.$root.$bvToast.toast(e.response.status, {
           title: 'DANGER',
@@ -86,7 +86,7 @@ export default {
       }
     },
     handleClickCancel() {
-      this.$root.$router.push('/');
+      this.$router.push('/');
     },
   },
 };

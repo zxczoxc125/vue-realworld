@@ -31,8 +31,8 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import { mapActions } from 'vuex';
 import TextInputWithValidation from '../FormItem/TextInputWithValidation.vue';
+import { AUTHENTICATION } from '../../store/mutations/user';
 
 export default {
   components: {
@@ -48,12 +48,12 @@ export default {
   methods: {
     async onSubmit() {
       const { email, password } = this;
-      this.AUTHENTICATION({ email, password });
+
+      this.$store.dispatch(AUTHENTICATION, { email, password });
     },
     handleClickSignUp() {
-      this.$root.$router.push('/sign-up');
+      this.$router.push('/sign-up');
     },
-    ...mapActions(['AUTHENTICATION']),
   },
 };
 </script>

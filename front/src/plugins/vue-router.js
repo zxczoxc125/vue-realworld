@@ -6,6 +6,8 @@ import SignUp from '../views/SignUp.vue';
 import NotFound from '../views/NotFound.vue';
 import Main from '../views/Main.vue';
 import { STORAGE_KEY } from '../constants/constants';
+import { setAuth } from '../configs/axiosConfig';
+import { GET_CURRENT_USER } from '../store/mutations/user';
 
 Vue.use(VueRouter);
 
@@ -29,12 +31,19 @@ const router = new VueRouter({
   mode: 'history',
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(({ meta: { requiresAuth } }) => !!requiresAuth)) {
+router.beforeEach(async ({ matched }, from, next) => {
+  if (matched.some(({ meta: { requiresAuth } }) => !!requiresAuth)) {
     const token = localStorage.getItem(STORAGE_KEY);
 
     if (token) {
-      next();
+      setAuth(token);
+
+      try {
+        router.app.$store.dispatch(GET_CURRENT_USER);
+        next();
+      } catch (e) {
+        next({ path: '/' });
+      }
     } else {
       next({ path: '/' });
     }
