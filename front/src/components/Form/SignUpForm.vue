@@ -51,7 +51,6 @@
 import { ValidationObserver } from 'vee-validate';
 import TextInputWithValidation from '../FormItem/TextInputWithValidation.vue';
 import { registration } from '../../services/userService';
-import { makeToast } from '../../utils/commonUtil';
 
 export default {
   components: {
@@ -71,14 +70,22 @@ export default {
       const { email, username, password } = this;
       try {
         await registration({ email, username, password });
-        makeToast({ variant: 'success', body: 'Welcome!' });
-        this.$router.push('/');
+        this.$root.$bvToast.toast('Welcome!', {
+          title: 'SUCCESS',
+          variant: 'success',
+          solid: true,
+        });
+        this.$root.$router.push('/');
       } catch (e) {
-        makeToast({ variant: 'danger', body: e.response.status });
+        this.$root.$bvToast.toast(e.response.status, {
+          title: 'DANGER',
+          variant: 'danger',
+          solid: true,
+        });
       }
     },
     handleClickCancel() {
-      this.$router.push('/');
+      this.$root.$router.push('/');
     },
   },
 };
