@@ -11,7 +11,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: [
-    { path: '/', component: SignIn, meta: { requiresAuth: false } },
+    { path: '/', component: SignIn },
     {
       path: '/',
       component: Layout,
