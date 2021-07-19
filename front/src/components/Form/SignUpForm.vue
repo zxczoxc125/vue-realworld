@@ -68,6 +68,7 @@ export default {
   methods: {
     async onSubmit() {
       const { email, username, password } = this;
+
       try {
         await registration({ email, username, password });
         this.$root.$bvToast.toast('Welcome!', {

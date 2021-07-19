@@ -17,6 +17,7 @@ const user = {
         const {
           data: { user },
         } = await authentication({ email, password });
+
         this._vm.$bvToast.toast('Welcome!', {
           title: 'SUCCESS',
           variant: 'success',
