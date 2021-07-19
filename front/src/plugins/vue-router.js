@@ -6,7 +6,7 @@ import SignUp from '../views/SignUp.vue';
 import NotFound from '../views/NotFound.vue';
 import Main from '../views/Main.vue';
 import { STORAGE_KEY } from '../constants/constants';
-import { setAuth } from '../configs/axiosConfig';
+import { setAuthHeader } from '../configs/axiosConfig';
 import { GET_CURRENT_USER } from '../store/mutations/user';
 
 Vue.use(VueRouter);
@@ -36,7 +36,7 @@ router.beforeEach(async ({ matched }, from, next) => {
     const token = localStorage.getItem(STORAGE_KEY);
 
     if (token) {
-      setAuth(token);
+      setAuthHeader(token);
 
       try {
         router.app.$store.dispatch(GET_CURRENT_USER);

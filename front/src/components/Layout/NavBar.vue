@@ -20,7 +20,7 @@
           ><span>PROFILE</span></b-nav-item
         >
         <b-dropdown-divider></b-dropdown-divider>
-        <b-nav-item href="#"
+        <b-nav-item href="#" @click="handleOnSignOut"
           ><b-icon
             icon="power"
             class="mr-2"
@@ -35,7 +35,15 @@
 </template>
 
 <script>
-export default {};
+import { SIGN_OUT } from '../../store/mutations/user';
+
+export default {
+  methods: {
+    handleOnSignOut() {
+      this.$store.dispatch(SIGN_OUT);
+    },
+  },
+};
 </script>
 
 <style scoped></style>

@@ -1,7 +1,13 @@
 import router from '../../plugins/vue-router';
 import { authentication, getCurrentUser } from '../../services/userService';
 import { STORAGE_KEY } from '../../constants/constants';
-import { AUTHENTICATION, GET_CURRENT_USER, SET_USER } from '../mutations/user';
+import {
+  AUTHENTICATION,
+  GET_CURRENT_USER,
+  SET_USER,
+  SIGN_OUT,
+} from '../mutations/user';
+import { resetAuth } from '../../utils/commonUtil';
 
 const user = {
   state: {
@@ -43,8 +49,14 @@ const user = {
 
         commit(SET_USER, user);
       } catch (e) {
+        resetAuth();
         router.push('/');
       }
+    },
+    async [SIGN_OUT]({ commit }) {
+      commit(SET_USER, {});
+      resetAuth();
+      router.push('/');
     },
   },
 };
