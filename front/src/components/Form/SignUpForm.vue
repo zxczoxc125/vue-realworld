@@ -50,6 +50,8 @@
 <script>
 import { ValidationObserver } from 'vee-validate';
 import TextInputWithValidation from '../FormItem/TextInputWithValidation.vue';
+import { registration } from '../../services/userService';
+import { makeToast } from '../../utils/commonUtil';
 
 export default {
   components: {
@@ -65,14 +67,15 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
+    async onSubmit() {
       const { email, username, password } = this;
-
-      console.log({
-        email,
-        username,
-        password,
-      });
+      try {
+        await registration({ email, username, password });
+        makeToast({ variant: 'success', body: 'Welcome!' });
+        this.$router.push('/');
+      } catch (e) {
+        makeToast({ variant: 'danger', body: e.response.status });
+      }
     },
     handleClickCancel() {
       this.$router.push('/');
