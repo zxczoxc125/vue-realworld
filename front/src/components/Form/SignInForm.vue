@@ -32,6 +32,8 @@
 <script>
 import { ValidationObserver } from 'vee-validate';
 import TextInputWithValidation from '../FormItem/TextInputWithValidation.vue';
+import { authentication } from '../../services/userService';
+import { makeToast } from '../../utils/commonUtil';
 
 export default {
   components: {
@@ -45,7 +47,16 @@ export default {
     };
   },
   methods: {
-    onSubmit() {},
+    async onSubmit() {
+      const { email, password } = this;
+      try {
+        await authentication({ email, password });
+        makeToast({ variant: 'success', body: 'Welcome!' });
+        this.$router.push('/main');
+      } catch (e) {
+        makeToast({ variant: 'danger', body: e.response.status });
+      }
+    },
     handleClickSignUp() {
       this.$router.push('/sign-up');
     },
