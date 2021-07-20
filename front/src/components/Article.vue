@@ -26,7 +26,11 @@
     <hr />
 
     <b-button title="Favorite" variant="light">
-      <b-icon v-if="!article.favorited" icon="heart" aria-hidden="true"></b-icon>
+      <b-icon
+        v-if="!article.favorited"
+        icon="heart"
+        aria-hidden="true"
+      ></b-icon>
       <b-icon
         v-else
         icon="heart-fill"
@@ -47,29 +51,13 @@
     </div>
 
     <template #footer>
-      <ValidationObserver ref="observer" v-slot="{ handleSubmit }">
-        <b-form @submit.prevent="handleSubmit(onSubmit)">
-          <TextAreaWithValidation
-            name="Comment"
-            id="comment"
-            rules="required"
-            label="Comment:"
-            v-model="comment"
-          />
-
-          <b-button class="float-right" type="submit" variant="outline-primary"
-            >Submit</b-button
-          >
-        </b-form>
-      </ValidationObserver>
+      <CommentForm :slug="article.slug" />
     </template>
   </b-card>
 </template>
 
 <script>
-// TODO: 컴포넌트 분리 생각해보기
-import { ValidationObserver } from 'vee-validate';
-import TextAreaWithValidation from './FormItem/TextAreaWithValidation.vue';
+import CommentForm from './Form/CommentForm.vue';
 
 export default {
   props: {
@@ -79,32 +67,7 @@ export default {
     },
   },
   components: {
-    TextAreaWithValidation,
-    ValidationObserver,
-  },
-  data() {
-    return {
-      comment: '',
-    };
-  },
-  methods: {
-    async onSubmit() {
-      const { comment } = this;
-
-      // try {
-      //   const article = { title, description, body, tagList };
-
-      //   await createArticle(article);
-      //   this.resetForm();
-      //   this.$emit('createArticle', article);
-      // } catch (e) {
-      //   this.$root.$bvToast.toast(e.response.status, {
-      //     title: 'DANGER',
-      //     variant: 'danger',
-      //     solid: true,
-      //   });
-      // }
-    },
+    CommentForm,
   },
 };
 </script>
