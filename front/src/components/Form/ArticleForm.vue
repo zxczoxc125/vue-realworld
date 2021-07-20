@@ -46,6 +46,7 @@
         :key="tag"
         class="btn btn-secondary btn-sm m-1 mb-3"
         type="button"
+        @click="handleOnClickTag(tag)"
       >
         {{ tag }}
         <b-icon icon="x" aria-hidden="true"></b-icon>
@@ -112,6 +113,9 @@ export default {
         this.tagList.push(this.tag);
         this.tag = '';
       }
+    },
+    handleOnClickTag(tag) {
+      this.tagList = this.tagList.filter((orgTag) => orgTag !== tag);
     },
   },
 };
