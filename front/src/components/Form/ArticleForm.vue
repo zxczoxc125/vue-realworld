@@ -21,15 +21,14 @@
         v-model="description"
       />
 
-      <!-- TODO: textarea 컴포넌트 구현 -->
-      <!-- <TextInputWithValidation
-        name="Password"
-        id="password"
+      <TextAreaWithValidation
+        name="Body"
+        id="body"
         rules="required"
-        label="Password:"
-        type="password"
-        v-model="password"
-      /> -->
+        label="Body:"
+        type="body"
+        v-model="body"
+      />
 
       <TextInputWithValidation
         name="Tag"
@@ -61,11 +60,13 @@
 <script>
 import { ValidationObserver } from 'vee-validate';
 import TextInputWithValidation from '../FormItem/TextInputWithValidation.vue';
+import TextAreaWithValidation from '../FormItem/TextAreaWithValidation.vue';
 
 export default {
   components: {
     ValidationObserver,
     TextInputWithValidation,
+    TextAreaWithValidation,
   },
   data() {
     return {
