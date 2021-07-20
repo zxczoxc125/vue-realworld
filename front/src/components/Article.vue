@@ -26,7 +26,7 @@
     <hr />
 
     <b-button title="Favorite" variant="light">
-      <b-icon v-if="article.favorited" icon="heart" aria-hidden="true"></b-icon>
+      <b-icon v-if="!article.favorited" icon="heart" aria-hidden="true"></b-icon>
       <b-icon
         v-else
         icon="heart-fill"
