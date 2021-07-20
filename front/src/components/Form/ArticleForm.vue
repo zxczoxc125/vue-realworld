@@ -88,8 +88,11 @@ export default {
       const { title, description, body, tagList } = this;
 
       try {
-        await createArticle({ title, description, body, tagList });
+        const article = { title, description, body, tagList };
+
+        await createArticle(article);
         this.resetForm();
+        this.$emit('createArticle', article);
       } catch (e) {
         this.$root.$bvToast.toast(e.response.status, {
           title: 'DANGER',
@@ -109,7 +112,7 @@ export default {
       });
     },
     handleOnKeyDownTag() {
-      if (!this.tagList.find((tag) => this.tag === tag)) {
+      if (!!this.tag && !this.tagList.find((tag) => this.tag === tag)) {
         this.tagList.push(this.tag);
         this.tag = '';
       }
