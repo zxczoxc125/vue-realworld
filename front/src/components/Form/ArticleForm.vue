@@ -106,6 +106,7 @@ export default {
     handleOnKeyDownTag() {
       if (!this.tagList.find((tag) => this.tag === tag)) {
         this.tagList.push(this.tag);
+        this.tag = '';
       }
     },
   },
