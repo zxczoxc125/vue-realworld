@@ -61,6 +61,7 @@
 import { ValidationObserver } from 'vee-validate';
 import TextInputWithValidation from '../FormItem/TextInputWithValidation.vue';
 import TextAreaWithValidation from '../FormItem/TextAreaWithValidation.vue';
+import { createArticle } from '../../services/articleService';
 
 export default {
   components: {
@@ -82,18 +83,14 @@ export default {
       const { title, description, body, tagList } = this;
 
       try {
-        // await registration({ email, username, password });
-        // this.$root.$bvToast.toast('Welcome!', {
-        //   title: 'SUCCESS',
-        //   variant: 'success',
-        //   solid: true,
-        // });
+        await createArticle({ title, description, body, tagList });
+        this.resetForm();
       } catch (e) {
-        // this.$root.$bvToast.toast(e.response.status, {
-        //   title: 'DANGER',
-        //   variant: 'danger',
-        //   solid: true,
-        // });
+        this.$root.$bvToast.toast(e.response.status, {
+          title: 'DANGER',
+          variant: 'danger',
+          solid: true,
+        });
       }
     },
     resetForm() {
@@ -115,4 +112,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.form {
+  min-width: 300px;
+}
+</style>
