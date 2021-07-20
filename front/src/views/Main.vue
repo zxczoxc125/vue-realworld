@@ -1,9 +1,15 @@
 <template>
-  <div>main</div>
+  <div>
+    <ArticleForm />
+  </div>
 </template>
 
 <script>
-export default {};
+import ArticleForm from '../components/Form/ArticleForm.vue';
+
+export default {
+  components: { ArticleForm },
+};
 </script>
 
 <style scoped></style>

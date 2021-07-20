@@ -6,7 +6,6 @@
         id="email"
         rules="required|email"
         label="E-mail:"
-        autocomplete="nope"
         v-model="email"
       />
 

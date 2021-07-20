@@ -11,16 +11,16 @@
 
     <b-collapse id="navbar-toggle-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
-        <b-nav-item href="#">
+        <b-nav-item to="/main">
           <b-icon icon="cloud-upload" class="mr-2" aria-hidden="true"></b-icon>
           <span>MAIN</span></b-nav-item
         >
-        <b-nav-item href="#"
+        <b-nav-item to="/profile"
           ><b-icon icon="inbox-fill" class="mr-2" aria-hidden="true"></b-icon
           ><span>PROFILE</span></b-nav-item
         >
         <b-dropdown-divider></b-dropdown-divider>
-        <b-nav-item href="#" @click="handleOnSignOut"
+        <b-nav-item @click="handleOnSignOut"
           ><b-icon
             icon="power"
             class="mr-2"

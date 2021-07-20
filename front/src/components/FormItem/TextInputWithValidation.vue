@@ -3,7 +3,7 @@
     :rules="$attrs.rules"
     :vid="$attrs.id"
     :name="$attrs.name"
-    v-slot="{ errors, valid }"
+    v-slot="{ errors, touched }"
   >
     <b-form-group :label="$attrs.label">
       <b-form-input
@@ -13,7 +13,8 @@
         :id="$attrs.id"
         :name="$attrs.name"
         :type="$attrs.type"
-        :state="errors[0] ? false : valid ? true : null"
+        :state="errors[0] ? false : touched ? true : null"
+        autocomplete="nope"
       ></b-form-input>
       <b-form-invalid-feedback>
         {{ errors[0] }}

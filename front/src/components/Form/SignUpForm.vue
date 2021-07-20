@@ -6,7 +6,6 @@
         id="email"
         rules="required|email"
         label="E-mail:"
-        autocomplete="nope"
         v-model="email"
       />
 
@@ -15,7 +14,6 @@
         id="username"
         rules="required"
         label="Username:"
-        autocomplete="nope"
         v-model="username"
       />
 
