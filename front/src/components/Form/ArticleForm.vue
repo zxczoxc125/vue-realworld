@@ -30,18 +30,22 @@
         v-model="body"
       />
 
-      <TextInputWithValidation
-        name="Tag"
-        id="tag"
-        label="Tag:"
-        v-model="tag"
-        @keydown.native.enter.prevent="handleOnKeyDownTag"
-      />
+      <b-form-group label="Tag:">
+        <b-form-input
+          placeholder="Tag"
+          name="Tag"
+          id="tag"
+          @keydown.native.enter.prevent="handleOnKeyDownTag"
+          autocomplete="nope"
+          v-model="tag"
+        ></b-form-input>
+      </b-form-group>
 
       <button
         v-for="tag in tagList"
         :key="tag"
         class="btn btn-secondary btn-sm m-1 mb-3"
+        type="button"
       >
         {{ tag }}
         <b-icon icon="x" aria-hidden="true"></b-icon>
