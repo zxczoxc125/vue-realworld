@@ -22,7 +22,6 @@
         id="body"
         rules="required"
         label="Body:"
-        type="body"
         v-model="body"
       />
 
@@ -44,7 +43,7 @@
         type="button"
         @click="handleOnClickTag(tag)"
       >
-        {{ tag }}
+        # {{ tag }}
         <b-icon icon="x" aria-hidden="true"></b-icon>
       </button>
 

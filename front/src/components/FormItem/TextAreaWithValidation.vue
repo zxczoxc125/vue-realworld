@@ -12,7 +12,6 @@
         :placeholder="$attrs.name"
         :id="$attrs.id"
         :name="$attrs.name"
-        :type="$attrs.type"
         :state="errors[0] ? false : touched ? true : null"
         autocomplete="nope"
       ></b-form-textarea>

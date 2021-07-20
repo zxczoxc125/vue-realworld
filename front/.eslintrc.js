@@ -16,5 +16,6 @@ module.exports = {
     'no-shadow': 0,
     'no-param-reassign': 0,
     'object-curly-newline': 0,
+    'function-paren-newline': 0,
   },
 };

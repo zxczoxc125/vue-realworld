@@ -3,6 +3,7 @@ import 'mutationobserver-shim';
 import Vue from 'vue';
 import './plugins/bootstrap-vue';
 import './plugins/vuex';
+import './plugins/filter';
 import store from './store/index';
 import router from './plugins/vue-router';
 import './globals/vee-validate';
