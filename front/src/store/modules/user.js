@@ -42,6 +42,7 @@ const user = {
       }
     },
     async [GET_CURRENT_USER]({ commit }) {
+      // FIXME: 인증, 인가 체크 axios쪽에서 해줘야 할 듯 한데, 순환참조 문제 발생
       try {
         const {
           data: { user },

@@ -39,10 +39,10 @@
 
     <div class="float-right text-right">
       <b-card-text class="text-black-50 m-1"
-        >created at {{ article.createdAt | commonDate }}</b-card-text
+        >created {{ article.createdAt | commonDate }}</b-card-text
       >
       <b-card-text class="text-black-50 m-1"
-        >updated at {{ article.updatedAt | commonDate }}</b-card-text
+        >updated {{ article.updatedAt | commonDate }}</b-card-text
       >
     </div>
 
