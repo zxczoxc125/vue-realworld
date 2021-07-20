@@ -1,10 +1,6 @@
 <template>
   <ValidationObserver ref="observer" v-slot="{ handleSubmit }">
-    <b-form
-      @submit.prevent="handleSubmit(onSubmit)"
-      class="form"
-      @reset="resetForm"
-    >
+    <b-form @submit.prevent="handleSubmit(onSubmit)" @reset="resetForm">
       <TextInputWithValidation
         name="Title"
         id="title"
@@ -124,8 +120,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.form {
-  min-width: 300px;
-}
-</style>
+<style scoped></style>
