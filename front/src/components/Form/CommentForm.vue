@@ -1,5 +1,5 @@
 <template>
-  <ValidationObserver ref="observer" v-slot="{ handleSubmit }">
+  <ValidationObserver ref="observer" v-slot="{ handleSubmit }" class="w-100">
     <b-form @submit.prevent="handleSubmit(onSubmit)">
       <TextAreaWithValidation
         name="Comment"
@@ -42,15 +42,17 @@ export default {
       const { body } = this;
 
       try {
-        const comment = { body };
+        const {
+          data: { comment },
+        } = await addCommentsToAnArticle(this.slug, { body });
 
-        await addCommentsToAnArticle(this.slug, comment);
         this.resetForm();
         this.$root.$bvToast.toast('Success!', {
           title: 'SUCCESS',
           variant: 'success',
           solid: true,
         });
+        this.$emit('addComments', comment);
       } catch (e) {
         this.$root.$bvToast.toast(e.response.status, {
           title: 'DANGER',

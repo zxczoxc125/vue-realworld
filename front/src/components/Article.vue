@@ -6,6 +6,7 @@
     footer-tag="footer"
   >
     <template #header>
+      <!-- TODO: 별도 컴포넌트로 분리 -> comment modal에서 재사용 -->
       <b-avatar class="mr-3" :src="article.author.image"></b-avatar>
       <span class="mr-auto">{{ article.author.username }}</span>
       <b-button class="float-right" title="More Info" variant="light">
@@ -53,14 +54,18 @@
     </div>
 
     <template #footer>
-      <CommentForm :slug="article.slug" />
+      <b-button
+        variant="light"
+        class="text-black-50 w-100"
+        @click="handleOnClickComments"
+        >Show Comments..</b-button
+      >
     </template>
   </b-card>
 </template>
 
 <script>
 import { deleteArticle, favoriteArticle } from '../services/articleService';
-import CommentForm from './Form/CommentForm.vue';
 
 export default {
   props: {
@@ -68,9 +73,6 @@ export default {
       type: Object,
       required: true,
     },
-  },
-  components: {
-    CommentForm,
   },
   methods: {
     async handleOnClickFavorite(favorite) {
@@ -81,6 +83,9 @@ export default {
         : await deleteArticle(this.article.slug);
 
       this.$emit('update:article', article);
+    },
+    handleOnClickComments() {
+      this.$emit('openCommentsModal', this.article);
     },
   },
 };
