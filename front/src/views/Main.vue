@@ -6,9 +6,9 @@
       <hr />
 
       <Article
-        v-for="article of articleList"
+        v-for="(article, index) of articleList"
         :key="article.slug"
-        :article="article"
+        :article.sync="articleList[index]"
         class="mb-2"
       />
     </b-col>

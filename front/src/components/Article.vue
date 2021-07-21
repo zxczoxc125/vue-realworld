@@ -30,12 +30,14 @@
         v-if="!article.favorited"
         icon="heart"
         aria-hidden="true"
+        @click="handleOnClickFavorite(true)"
       ></b-icon>
       <b-icon
         v-else
         icon="heart-fill"
         aria-hidden="true"
         class="text-danger"
+        @click="handleOnClickFavorite(false)"
       ></b-icon>
     </b-button>
 
@@ -57,6 +59,7 @@
 </template>
 
 <script>
+import { deleteArticle, favoriteArticle } from '../services/articleService';
 import CommentForm from './Form/CommentForm.vue';
 
 export default {
@@ -68,6 +71,17 @@ export default {
   },
   components: {
     CommentForm,
+  },
+  methods: {
+    async handleOnClickFavorite(favorite) {
+      const {
+        data: { article },
+      } = favorite
+        ? await favoriteArticle(this.article.slug)
+        : await deleteArticle(this.article.slug);
+
+      this.$emit('update:article', article);
+    },
   },
 };
 </script>
