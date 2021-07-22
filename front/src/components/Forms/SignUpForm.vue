@@ -37,7 +37,7 @@
 
       <b-button-group class="w-100">
         <b-button type="submit" variant="outline-primary">Sign In</b-button>
-        <b-button variant="outline-danger" @click="handleOnClickCancel"
+        <b-button variant="outline-danger" @click="handleClickCancel"
           >Cancel</b-button
         ></b-button-group
       >
@@ -83,7 +83,7 @@ export default {
         });
       }
     },
-    handleOnClickCancel() {
+    handleClickCancel() {
       this.$router.push('/');
     },
   },

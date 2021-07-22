@@ -26,14 +26,14 @@
         v-if="!article.favorited"
         icon="heart"
         aria-hidden="true"
-        @click="handleOnClickFavorite(true)"
+        @click="handleClickFavorite(true)"
       ></b-icon>
       <b-icon
         v-else
         icon="heart-fill"
         aria-hidden="true"
         class="text-danger"
-        @click="handleOnClickFavorite(false)"
+        @click="handleClickFavorite(false)"
       ></b-icon>
     </b-button>
 
@@ -52,7 +52,7 @@
       <b-button
         variant="light"
         class="text-black-50 w-100"
-        @click="handleOnClickComments"
+        @click="handleClickComments"
         >Show Comments..</b-button
       >
     </template>
@@ -74,7 +74,7 @@ export default {
     AuthorCard,
   },
   methods: {
-    async handleOnClickFavorite(favorite) {
+    async handleClickFavorite(favorite) {
       const {
         data: { article },
       } = favorite
@@ -83,7 +83,7 @@ export default {
 
       this.$emit('update:article', article);
     },
-    handleOnClickComments() {
+    handleClickComments() {
       this.$emit('openCommentsModal', this.article);
     },
   },

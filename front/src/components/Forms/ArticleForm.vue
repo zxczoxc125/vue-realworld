@@ -30,7 +30,7 @@
           placeholder="Tag"
           name="Tag"
           id="tag"
-          @keydown.native.enter.prevent="handleOnKeyDownTag"
+          @keydown.native.enter.prevent="handleKeyDownTag"
           autocomplete="nope"
           v-model="tag"
         ></b-form-input>
@@ -41,7 +41,7 @@
         :key="tag"
         class="btn btn-secondary btn-sm m-1 mb-3"
         type="button"
-        @click="handleOnClickTag(tag)"
+        @click="handleClickTag(tag)"
       >
         # {{ tag }}
         <b-icon icon="x" aria-hidden="true"></b-icon>
@@ -106,13 +106,13 @@ export default {
         this.$refs.observer.reset();
       });
     },
-    handleOnKeyDownTag() {
+    handleKeyDownTag() {
       if (!!this.tag && !this.tagList.find((tag) => this.tag === tag)) {
         this.tagList.push(this.tag);
         this.tag = '';
       }
     },
-    handleOnClickTag(tag) {
+    handleClickTag(tag) {
       this.tagList = this.tagList.filter((orgTag) => orgTag !== tag);
     },
   },

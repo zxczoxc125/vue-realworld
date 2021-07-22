@@ -4,7 +4,7 @@
     :visible="show"
     centered
     scrollable
-    @hide="handleOnHide"
+    @hide="handleHide"
   >
     <template #modal-title>
       Comments
@@ -28,7 +28,7 @@
     </b-list-group>
 
     <template #modal-footer>
-      <CommentForm :slug="article.slug" @addComments="handleOnAddComments" />
+      <CommentForm :slug="article.slug" @addComments="handleAddComments" />
     </template>
   </b-modal>
 </template>
@@ -57,12 +57,12 @@ export default {
     AuthorCard,
   },
   methods: {
-    handleOnHide() {
+    handleHide() {
       this.$emit('update:comments', []);
       this.$emit('update:article', {});
       this.$emit('update:show', false);
     },
-    handleOnAddComments(comment) {
+    handleAddComments(comment) {
       this.$emit('update:comments', [comment, ...this.comments]);
     },
   },

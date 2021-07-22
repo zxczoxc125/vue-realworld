@@ -1,7 +1,7 @@
 <template>
   <b-container class="d-flex justify-content-center mt-4">
     <b-col sm="8">
-      <ArticleForm @createArticle="handleOnCreateArticle" />
+      <ArticleForm @createArticle="handleCreateArticle" />
 
       <hr />
 
@@ -10,7 +10,7 @@
         :key="article.slug"
         :article.sync="articles[index]"
         class="mb-2"
-        @openCommentsModal="handleOnOpenCommentsModal"
+        @openCommentsModal="handleOpenCommentsModal"
       />
 
       <CommentsModal
@@ -45,7 +45,7 @@ export default {
     };
   },
   methods: {
-    handleOnCreateArticle(article) {
+    handleCreateArticle(article) {
       this.articles.unshift(article);
     },
     // TODO: 에러처리, multiple call 등 여러가지 생각해보기
@@ -56,7 +56,7 @@ export default {
 
       this.articles = articles;
     },
-    async handleOnOpenCommentsModal(article) {
+    async handleOpenCommentsModal(article) {
       const {
         data: { comments },
       } = await getCommentsFromAnArticle(article.slug);

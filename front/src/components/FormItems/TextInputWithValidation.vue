@@ -8,7 +8,7 @@
     <b-form-group :label="$attrs.label">
       <b-form-input
         :value="value"
-        @input="handleOnInput"
+        @input="handleInput"
         :placeholder="$attrs.name"
         :id="$attrs.id"
         :name="$attrs.name"
@@ -36,7 +36,7 @@ export default {
     },
   },
   methods: {
-    handleOnInput(value) {
+    handleInput(value) {
       this.$emit('input', value);
     },
   },
