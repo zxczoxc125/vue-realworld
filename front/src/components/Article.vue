@@ -6,12 +6,7 @@
     footer-tag="footer"
   >
     <template #header>
-      <!-- TODO: 별도 컴포넌트로 분리 -> comment modal에서 재사용 -->
-      <b-avatar class="mr-3" :src="article.author.image"></b-avatar>
-      <span class="mr-auto">{{ article.author.username }}</span>
-      <b-button class="float-right" title="More Info" variant="light">
-        <b-icon icon="three-dots-vertical" aria-hidden="true"></b-icon>
-      </b-button>
+      <AuthorCard :author="article.author" />
     </template>
 
     <b-card-text class="mt-4">{{ article.body }}</b-card-text>
@@ -66,6 +61,7 @@
 
 <script>
 import { deleteArticle, favoriteArticle } from '../services/articleService';
+import AuthorCard from './AuthorCard.vue';
 
 export default {
   props: {
@@ -73,6 +69,9 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  components: {
+    AuthorCard,
   },
   methods: {
     async handleOnClickFavorite(favorite) {

@@ -12,9 +12,19 @@
 
     <!-- TODO: 댓글 제한 + 댓글 더보기 구현 -->
     <b-list-group>
-      <b-list-group-item v-for="comment of comments" :key="comment.id">{{
-        comment.body
-      }}</b-list-group-item>
+      <b-list-group-item v-for="comment of comments" :key="comment.id">
+        <AuthorCard :author="comment.author" bgVariant="default" />
+
+        <b-card-text class="mt-2 mb-0">
+          {{ comment.body }}
+        </b-card-text>
+
+        <div class="float-right text-right">
+          <b-card-text class="text-black-50 m-1"
+            >created {{ comment.createdAt | commonDate }}</b-card-text
+          >
+        </div>
+      </b-list-group-item>
     </b-list-group>
 
     <template #modal-footer>
@@ -25,6 +35,7 @@
 
 <script>
 import CommentForm from '../Form/CommentForm.vue';
+import AuthorCard from '../AuthorCard.vue';
 
 export default {
   props: {
@@ -43,6 +54,7 @@ export default {
   },
   components: {
     CommentForm,
+    AuthorCard,
   },
   methods: {
     handleOnHide() {
