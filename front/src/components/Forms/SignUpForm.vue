@@ -47,7 +47,7 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import TextInputWithValidation from '../FormItem/TextInputWithValidation.vue';
+import TextInputWithValidation from '../FormItems/TextInputWithValidation.vue';
 import { registration } from '../../services/userService';
 
 export default {

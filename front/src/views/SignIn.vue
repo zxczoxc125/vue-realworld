@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import SignInForm from '../components/Form/SignInForm.vue';
-import Page from '../components/Layout/Page.vue';
+import SignInForm from '../components/Forms/SignInForm.vue';
+import Page from '../components/Layouts/Page.vue';
 
 export default {
   components: {

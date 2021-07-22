@@ -30,7 +30,7 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import TextInputWithValidation from '../FormItem/TextInputWithValidation.vue';
+import TextInputWithValidation from '../FormItems/TextInputWithValidation.vue';
 import { AUTHENTICATION } from '../../store/mutations/user';
 
 export default {

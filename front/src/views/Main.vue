@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import ArticleForm from '../components/Form/ArticleForm.vue';
+import ArticleForm from '../components/Forms/ArticleForm.vue';
 import Article from '../components/Article.vue';
 import { listArticles } from '../services/articleService';
-import CommentsModal from '../components/Modal/CommentsModal.vue';
+import CommentsModal from '../components/Modals/CommentsModal.vue';
 import { getCommentsFromAnArticle } from '../services/commentService';
 
 export default {

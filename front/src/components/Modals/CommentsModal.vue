@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import CommentForm from '../Form/CommentForm.vue';
+import CommentForm from '../Forms/CommentForm.vue';
 import AuthorCard from '../AuthorCard.vue';
 
 export default {

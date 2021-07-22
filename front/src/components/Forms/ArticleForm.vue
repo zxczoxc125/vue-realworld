@@ -59,8 +59,8 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import TextInputWithValidation from '../FormItem/TextInputWithValidation.vue';
-import TextAreaWithValidation from '../FormItem/TextAreaWithValidation.vue';
+import TextInputWithValidation from '../FormItems/TextInputWithValidation.vue';
+import TextAreaWithValidation from '../FormItems/TextAreaWithValidation.vue';
 import { createArticle } from '../../services/articleService';
 
 export default {

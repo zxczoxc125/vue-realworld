@@ -18,7 +18,7 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate';
-import TextAreaWithValidation from '../FormItem/TextAreaWithValidation.vue';
+import TextAreaWithValidation from '../FormItems/TextAreaWithValidation.vue';
 import { addCommentsToAnArticle } from '../../services/commentService';
 
 export default {
