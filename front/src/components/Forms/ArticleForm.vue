@@ -83,9 +83,15 @@ export default {
       const { title, description, body, tagList } = this;
 
       try {
-        const article = { title, description, body, tagList };
+        const {
+          data: { article },
+        } = await createArticle({
+          title,
+          description,
+          body,
+          tagList,
+        });
 
-        await createArticle(article);
         this.resetForm();
         this.$emit('createArticle', article);
       } catch (e) {
