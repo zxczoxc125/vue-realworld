@@ -4,7 +4,6 @@
       Comments
     </template>
 
-    <!-- TODO: 댓글 제한 + 댓글 더보기 구현 -->
     <b-list-group>
       <b-list-group-item v-for="comment of comments" :key="comment.id">
         <AuthorCard

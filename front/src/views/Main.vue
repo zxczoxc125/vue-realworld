@@ -61,7 +61,6 @@ export default {
     handleCreateArticle(article) {
       this.articles.unshift(article);
     },
-    // TODO: 에러처리, multiple call 등 여러가지 생각해보기
     async listArticles() {
       const {
         data: { articles },
