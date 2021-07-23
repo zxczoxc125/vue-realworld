@@ -24,20 +24,22 @@
 
     <hr />
 
-    <b-button title="Favorite" variant="light">
-      <b-icon
-        v-if="!article.favorited"
-        icon="heart"
-        aria-hidden="true"
-        @click="handleClickFavorite(true)"
-      ></b-icon>
-      <b-icon
-        v-else
-        icon="heart-fill"
-        aria-hidden="true"
-        class="text-danger"
-        @click="handleClickFavorite(false)"
-      ></b-icon>
+    <b-button
+      v-if="!article.favorited"
+      @click="handleClickFavorite(true)"
+      title="Favorite"
+      variant="light"
+    >
+      <b-icon icon="heart" aria-hidden="true"></b-icon>
+    </b-button>
+
+    <b-button
+      v-else
+      @click="handleClickFavorite(false)"
+      title="Favorite"
+      variant="light"
+    >
+      <b-icon icon="heart-fill" aria-hidden="true" class="text-danger"></b-icon>
     </b-button>
 
     <span>{{ article.favoritesCount }} favorites</span>
