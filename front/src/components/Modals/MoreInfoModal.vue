@@ -7,25 +7,13 @@
     hide-footer
     body-class="p-0"
   >
-    <b-button-group vertical class="w-100">
-      <!-- TODO: 다른 옵션 -->
-      <b-button
-        v-if="!author.following"
-        @click="handleClickFollow(true)"
-        variant="light"
-        >Follow</b-button
-      >
-      <b-button
-        v-else
-        @click="handleClickFollow(false)"
-        variant="light"
-        class="text-warning"
-        >Unfollow</b-button
-      >
-      <b-button @click="handleHide" variant="light" class="text-danger"
-        >Cancel</b-button
-      >
-    </b-button-group>
+    <FigureActionButtonGroup
+      v-if="author.username === user.username"
+      :handleClickUpdate="handleClickUpdate"
+      :handleClickDelete="handleClickDelete"
+      :handleHide="handleHide"
+    />
+
     <FollowButtonGroup
       v-else
       :author="author"
@@ -37,11 +25,13 @@
 
 <script>
 import { mapState } from 'vuex';
+import FigureActionButtonGroup from '../ButtonGroups/FigureActionButtonGroup.vue';
 import FollowButtonGroup from '../ButtonGroups/FollowButtonGroup.vue';
 import { followUser, unfollowUser } from '../../services/userService';
 
 export default {
   components: {
+    FigureActionButtonGroup,
     FollowButtonGroup,
   },
   props: {
@@ -94,6 +84,8 @@ export default {
         }),
       );
     },
+    handleClickUpdate() {},
+    handleClickDelete() {},
   },
   computed: {
     ...mapState({
