@@ -8,6 +8,7 @@ import {
   SIGN_OUT,
 } from '../mutations/user';
 import { resetAuth } from '../../utils/commonUtil';
+import { setAuthHeader } from '../../configs/axiosConfig';
 
 const user = {
   state: {
@@ -30,9 +31,12 @@ const user = {
           variant: 'success',
           solid: true,
         });
+
         localStorage.setItem(STORAGE_KEY, user.token);
-        router.push('/main');
+        setAuthHeader(user.token);
         commit(SET_USER, user);
+
+        router.push('/main');
       } catch (e) {
         this._vm.$bvToast.toast(e.response.status, {
           title: 'DANGER',
