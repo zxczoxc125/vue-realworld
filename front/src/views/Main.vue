@@ -25,6 +25,8 @@
       <MoreInfoModal
         :show.sync="showMoreInfoModal"
         :author.sync="selectedAuthor"
+        :articles.sync="articles"
+        :comments.sync="comments"
       />
     </b-col>
   </b-container>
