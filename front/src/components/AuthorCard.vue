@@ -3,7 +3,12 @@
     <b-card-body class="p-0">
       <b-avatar class="mr-3" :src="author.image"></b-avatar>
       <span class="mr-auto">{{ author.username }}</span>
-      <b-button class="float-right" title="More Info" variant="light">
+      <b-button
+        @click="handleClickMoreInfo"
+        class="float-right"
+        title="More Info"
+        variant="light"
+      >
         <b-icon icon="three-dots-vertical" aria-hidden="true"></b-icon>
       </b-button> </b-card-body
   ></b-card>
@@ -19,6 +24,11 @@ export default {
     bgVariant: {
       type: String,
       default: 'light',
+    },
+  },
+  methods: {
+    handleClickMoreInfo() {
+      this.$emit('clickMoreInfo', this.author);
     },
   },
 };

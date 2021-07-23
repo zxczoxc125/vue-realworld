@@ -1,11 +1,5 @@
 <template>
-  <b-modal
-    id="comments"
-    :visible="show"
-    centered
-    scrollable
-    @hide="handleHide"
-  >
+  <b-modal id="comments" :visible="show" centered scrollable @hide="handleHide">
     <template #modal-title>
       Comments
     </template>
@@ -13,7 +7,11 @@
     <!-- TODO: 댓글 제한 + 댓글 더보기 구현 -->
     <b-list-group>
       <b-list-group-item v-for="comment of comments" :key="comment.id">
-        <AuthorCard :author="comment.author" bgVariant="default" />
+        <AuthorCard
+          :author="comment.author"
+          bgVariant="default"
+          @clickMoreInfo="handleClickMoreInfo"
+        />
 
         <b-card-text class="mt-2 mb-0">
           {{ comment.body }}
@@ -64,6 +62,9 @@ export default {
     },
     handleAddComments(comment) {
       this.$emit('update:comments', [comment, ...this.comments]);
+    },
+    handleClickMoreInfo(author) {
+      this.$emit('clickMoreInfo', author);
     },
   },
 };

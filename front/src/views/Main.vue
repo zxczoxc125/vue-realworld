@@ -11,6 +11,7 @@
         :article.sync="articles[index]"
         class="mb-2"
         @openCommentsModal="handleOpenCommentsModal"
+        @clickMoreInfo="handleClickMoreInfo"
       />
 
       <CommentsModal
@@ -18,6 +19,12 @@
         :comments.sync="comments"
         :article.sync="selectedArticle"
         :show.sync="showCommentsModal"
+        @clickMoreInfo="handleClickMoreInfo"
+      />
+
+      <MoreInfoModal
+        :show.sync="showMoreInfoModal"
+        :author.sync="selectedAuthor"
       />
     </b-col>
   </b-container>
@@ -28,6 +35,7 @@ import ArticleForm from '../components/Forms/ArticleForm.vue';
 import Article from '../components/Article.vue';
 import { listArticles } from '../services/articleService';
 import CommentsModal from '../components/Modals/CommentsModal.vue';
+import MoreInfoModal from '../components/Modals/MoreInfoModal.vue';
 import { getCommentsFromAnArticle } from '../services/commentService';
 
 export default {
@@ -35,6 +43,7 @@ export default {
     ArticleForm,
     Article,
     CommentsModal,
+    MoreInfoModal,
   },
   data() {
     return {
@@ -42,6 +51,8 @@ export default {
       selectedArticle: {},
       showCommentsModal: false,
       comments: [],
+      showMoreInfoModal: false,
+      selectedAuthor: {},
     };
   },
   methods: {
@@ -64,6 +75,10 @@ export default {
       this.comments = comments;
       this.selectedArticle = article;
       this.showCommentsModal = true;
+    },
+    handleClickMoreInfo(author) {
+      this.showMoreInfoModal = true;
+      this.selectedAuthor = author;
     },
   },
   created() {

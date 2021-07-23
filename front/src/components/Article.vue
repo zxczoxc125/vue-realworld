@@ -6,7 +6,10 @@
     footer-tag="footer"
   >
     <template #header>
-      <AuthorCard :author="article.author" />
+      <AuthorCard
+        :author="article.author"
+        @clickMoreInfo="handleClickMoreInfo"
+      />
     </template>
 
     <b-card-text class="mt-4">{{ article.body }}</b-card-text>
@@ -85,6 +88,9 @@ export default {
     },
     handleClickComments() {
       this.$emit('openCommentsModal', this.article);
+    },
+    handleClickMoreInfo(author) {
+      this.$emit('clickMoreInfo', author);
     },
   },
 };
