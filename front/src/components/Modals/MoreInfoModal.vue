@@ -43,6 +43,16 @@ export default {
       type: Object,
       required: true,
     },
+    comments: {
+      type: Array,
+      required: true,
+      default: () => [],
+    },
+    articles: {
+      type: Array,
+      required: true,
+      default: () => [],
+    },
   },
   methods: {
     handleHide() {
@@ -56,6 +66,23 @@ export default {
         : await unfollowUser(this.author.username);
 
       this.$emit('update:author', profile);
+      // FIXME: 코드정리
+      this.$emit(
+        'update:articles',
+        this.articles.map((article) => {
+          return article.author.username === profile.username
+            ? { ...article, author: profile }
+            : article;
+        }),
+      );
+      this.$emit(
+        'update:comments',
+        this.comments.map((comment) => {
+          return comment.author.username === profile.username
+            ? { ...comment, author: profile }
+            : comment;
+        }),
+      );
     },
   },
   computed: {
