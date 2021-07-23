@@ -26,14 +26,24 @@
         >Cancel</b-button
       >
     </b-button-group>
+    <FollowButtonGroup
+      v-else
+      :author="author"
+      :handleClickFollow="handleClickFollow"
+      :handleHide="handleHide"
+    />
   </b-modal>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import FollowButtonGroup from '../ButtonGroups/FollowButtonGroup.vue';
 import { followUser, unfollowUser } from '../../services/userService';
 
 export default {
+  components: {
+    FollowButtonGroup,
+  },
   props: {
     show: {
       type: Boolean,
