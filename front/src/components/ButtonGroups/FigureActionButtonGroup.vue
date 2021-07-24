@@ -4,7 +4,7 @@
     <b-button @click="handleClickDelete" variant="light" class="text-danger"
       >Delete</b-button
     >
-    <b-button @click="handleHide" variant="light" class="text-danger"
+    <b-button @click="handleCkickCancel" variant="light" class="text-danger"
       >Cancel</b-button
     >
   </b-button-group>
@@ -21,7 +21,7 @@ export default {
       type: Function,
       required: true,
     },
-    handleHide: {
+    handleCkickCancel: {
       type: Function,
       required: true,
     },

@@ -11,14 +11,13 @@
       v-if="author.username === user.username"
       :handleClickUpdate="handleClickUpdate"
       :handleClickDelete="handleClickDelete"
-      :handleHide="handleHide"
+      :handleCkickCancel="handleCkickCancel"
     />
 
     <FollowButtonGroup
       v-else
       :author="author"
-      :handleClickFollow="handleClickFollow"
-      :handleHide="handleHide"
+      :handleCkickCancel="handleCkickCancel"
     />
   </b-modal>
 </template>
