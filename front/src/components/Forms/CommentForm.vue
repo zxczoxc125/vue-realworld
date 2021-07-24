@@ -47,11 +47,6 @@ export default {
         } = await addCommentsToAnArticle(this.slug, { body });
 
         this.resetForm();
-        this.$root.$bvToast.toast('Success!', {
-          title: 'SUCCESS',
-          variant: 'success',
-          solid: true,
-        });
         this.$emit('addComments', comment);
       } catch (e) {
         this.$root.$bvToast.toast(e.response.status, {

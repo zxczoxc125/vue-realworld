@@ -89,7 +89,7 @@ export default {
       this.$emit('update:article', article);
     },
     handleClickComments() {
-      this.$emit('openCommentsModal', this.article);
+      this.$emit('clickComments', this.article);
     },
     handleClickMoreInfo(author) {
       this.$emit('clickMoreInfo', author);
