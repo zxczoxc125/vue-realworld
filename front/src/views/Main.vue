@@ -10,7 +10,7 @@
         :key="article.slug"
         :article.sync="articles[index]"
         class="mb-2"
-        @openCommentsModal="handleOpenCommentsModal"
+        @clickComments="handleClickComments"
         @clickMoreInfo="handleClickMoreInfo"
       />
 
@@ -68,7 +68,7 @@ export default {
 
       this.articles = articles;
     },
-    async handleOpenCommentsModal(article) {
+    async handleClickComments(article) {
       const {
         data: { comments },
       } = await getCommentsFromAnArticle(article.slug);
