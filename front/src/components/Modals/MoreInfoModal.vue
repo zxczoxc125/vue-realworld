@@ -7,31 +7,27 @@
     hide-footer
     body-class="p-0"
   >
-    <FigureActionButtonGroup
+    <ButtonGroup
       v-if="author.username === user.username"
-      :handleClickUpdate="handleClickUpdate"
-      :handleClickDelete="handleClickDelete"
-      :handleCkickCancel="handleCkickCancel"
+      :actions="articleActions"
+      :handleCkickCancel="handleHide"
     />
-
-    <FollowButtonGroup
+    <ButtonGroup
       v-else
-      :author="author"
-      :handleCkickCancel="handleCkickCancel"
+      :actions="followActions"
+      :handleCkickCancel="handleHide"
     />
   </b-modal>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import FigureActionButtonGroup from '../ButtonGroups/FigureActionButtonGroup.vue';
-import FollowButtonGroup from '../ButtonGroups/FollowButtonGroup.vue';
 import { followUser, unfollowUser } from '../../services/userService';
+import ButtonGroup from '../ButtonGroup.vue';
 
 export default {
   components: {
-    FigureActionButtonGroup,
-    FollowButtonGroup,
+    ButtonGroup,
   },
   props: {
     show: {
@@ -52,6 +48,14 @@ export default {
       required: true,
       default: () => [],
     },
+  },
+  data() {
+    return {
+      articleActions: [
+        { text: 'Update', handler: () => {} },
+        { text: 'Delete', handler: () => {}, class: 'text-danger' },
+      ],
+    };
   },
   methods: {
     handleHide() {
@@ -83,10 +87,19 @@ export default {
         }),
       );
     },
-    handleClickUpdate() {},
-    handleClickDelete() {},
   },
   computed: {
+    followActions() {
+      return this.author.following
+        ? [
+            {
+              text: 'Unfollow',
+              handler: () => this.handleClickFollow(false),
+              class: 'text-danger',
+            },
+          ]
+        : [{ text: 'Follow', handler: () => this.handleClickFollow(true) }];
+    },
     ...mapState({
       user: (state) => state.user.user,
     }),

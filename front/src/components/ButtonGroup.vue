@@ -1,8 +1,12 @@
 <template>
   <b-button-group vertical class="w-100">
-    <b-button @click="handleClickUpdate" variant="light">Update</b-button>
-    <b-button @click="handleClickDelete" variant="light" class="text-danger"
-      >Delete</b-button
+    <b-button
+      v-for="action of actions"
+      :key="action.text"
+      @click="action.handler"
+      variant="light"
+      :class="action.class"
+      >{{ action.text }}</b-button
     >
     <b-button @click="handleCkickCancel" variant="light" class="text-danger"
       >Cancel</b-button
@@ -13,17 +17,15 @@
 <script>
 export default {
   props: {
-    handleClickUpdate: {
-      type: Function,
+    actions: {
+      type: Array,
       required: true,
-    },
-    handleClickDelete: {
-      type: Function,
-      required: true,
+      default: () => [],
     },
     handleCkickCancel: {
       type: Function,
       required: true,
+      default: () => {},
     },
   },
 };

@@ -18,5 +18,6 @@ module.exports = {
     'object-curly-newline': 0,
     'function-paren-newline': 0,
     'arrow-body-style': 0,
+    indent: 0,
   },
 };
